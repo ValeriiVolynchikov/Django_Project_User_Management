@@ -177,3 +177,4 @@ pyproject.toml
 # Project specific
 /config/local_settings.py
 "@ | Out-File -FilePath .gitignore -Encoding utf8
+db.sqlite3
