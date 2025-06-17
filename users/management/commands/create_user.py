@@ -42,4 +42,3 @@ class Command(BaseCommand):
             self.stdout.write(
                 self.style.WARNING(f"Пользователь {email} уже существует")
             )
-            

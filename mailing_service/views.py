@@ -4,11 +4,16 @@ from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.utils import timezone
-from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
-                                  TemplateView, UpdateView)
+from django.views.generic import (
+    CreateView,
+    DeleteView,
+    DetailView,
+    ListView,
+    TemplateView,
+    UpdateView,
+)
 
-from mailing_service.forms import (MailingForm, MailingRecipientForm,
-                                   MessageForm)
+from mailing_service.forms import MailingForm, MailingRecipientForm, MessageForm
 from mailing_service.models import Mailing, MailingRecipient, Message
 from mailing_service.services import MailingService, get_data_from_cache
 
