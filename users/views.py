@@ -1,9 +1,11 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import Group
-from django.contrib.auth.views import (PasswordResetCompleteView,
-                                       PasswordResetConfirmView,
-                                       PasswordResetDoneView,
-                                       PasswordResetView)
+from django.contrib.auth.views import (
+    PasswordResetCompleteView,
+    PasswordResetConfirmView,
+    PasswordResetDoneView,
+    PasswordResetView,
+)
 from django.core.mail import send_mail
 from django.http import HttpResponseForbidden
 from django.urls import reverse_lazy
@@ -64,6 +66,7 @@ class ProfileView(LoginRequiredMixin, UpdateView):
 class UsersListView(LoginRequiredMixin, ListView):
     model = CustomUser
     template_name = "users/users_list.html"
+    context_object_name = "object_list"  # Явно указываем имя переменной
 
     def dispatch(self, request, *args, **kwargs):
         # Проверяем, имеет ли пользователь право на просмотр списка клиентов

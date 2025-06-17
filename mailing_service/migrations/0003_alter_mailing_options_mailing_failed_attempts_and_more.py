@@ -8,33 +8,41 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('mailing_service', '0002_initial'),
+        ("mailing_service", "0002_initial"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='mailing',
-            options={'permissions': [('can_disable_mailing', 'Can disable mailing')], 'verbose_name': 'Рассылка', 'verbose_name_plural': 'Рассылки'},
+            name="mailing",
+            options={
+                "permissions": [("can_disable_mailing", "Can disable mailing")],
+                "verbose_name": "Рассылка",
+                "verbose_name_plural": "Рассылки",
+            },
         ),
         migrations.AddField(
-            model_name='mailing',
-            name='failed_attempts',
+            model_name="mailing",
+            name="failed_attempts",
             field=models.PositiveIntegerField(default=0),
         ),
         migrations.AddField(
-            model_name='mailing',
-            name='successful_attempts',
+            model_name="mailing",
+            name="successful_attempts",
             field=models.PositiveIntegerField(default=0),
         ),
         migrations.AddField(
-            model_name='mailing',
-            name='total_messages_sent',
+            model_name="mailing",
+            name="total_messages_sent",
             field=models.PositiveIntegerField(default=0),
         ),
         migrations.AlterField(
-            model_name='mailingrecipient',
-            name='owner',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='Владелец'),
+            model_name="mailingrecipient",
+            name="owner",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                to=settings.AUTH_USER_MODEL,
+                verbose_name="Владелец",
+            ),
         ),
     ]

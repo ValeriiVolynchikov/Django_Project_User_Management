@@ -34,7 +34,7 @@ class Command(BaseCommand):
             mailing_attempt = MailingAttempt.objects.create(
                 status="Success" if success_count == len(recipients) else "Failed",
                 server_response="\n".join(errors)
-                or f"Отправлено {success_count} из {len(recipients)}",
+                or (f"Отправлено {success_count} из {len(recipients)}"),
                 mailing=mailing,
             )
 

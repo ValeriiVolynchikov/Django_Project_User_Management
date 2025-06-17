@@ -43,4 +43,3 @@ class Command(BaseCommand):
         self.stdout.write(
             self.style.SUCCESS("Группы 'Менеджеры' и 'Пользователи' успешно созданы!")
         )
-        

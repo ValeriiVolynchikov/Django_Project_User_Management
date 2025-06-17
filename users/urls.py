@@ -3,11 +3,16 @@ from django.urls import path
 
 from users.apps import UsersConfig
 from users.services import block_user, email_verification
-from users.views import (CustomPasswordResetCompleteView,
-                         CustomPasswordResetConfirmView,
-                         CustomPasswordResetDoneView, CustomPasswordResetView,
-                         EmailConfirmationView, ProfileView, RegisterView,
-                         UsersListView)
+from users.views import (
+    CustomPasswordResetCompleteView,
+    CustomPasswordResetConfirmView,
+    CustomPasswordResetDoneView,
+    CustomPasswordResetView,
+    EmailConfirmationView,
+    ProfileView,
+    RegisterView,
+    UsersListView,
+)
 
 app_name = UsersConfig.name
 
@@ -21,7 +26,7 @@ urlpatterns = [
         EmailConfirmationView.as_view(),
         name="email_confirmation",
     ),
-    path("list", (UsersListView.as_view()), name="users_list"),
+    path("list/", (UsersListView.as_view()), name="users_list"),
     path("block_user/<int:pk>", block_user, name="block_user"),
     path("profile/", ProfileView.as_view(), name="profile"),
     path("password-reset/", CustomPasswordResetView.as_view(), name="password_reset"),

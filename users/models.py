@@ -3,13 +3,14 @@ from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.base_user import BaseUserManager
 from django.db import models
 
+
 # Создаем менеджер для кастомной модели пользователя
 class CustomUserManager(BaseUserManager):
     use_in_migrations = True
 
     def create_user(self, email, password=None, **extra_fields):
         if not email:
-            raise ValueError('Email должен быть установлен')
+            raise ValueError("Email должен быть установлен")
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
         user.set_password(password)
@@ -17,15 +18,16 @@ class CustomUserManager(BaseUserManager):
         return user
 
     def create_superuser(self, email, password, **extra_fields):
-        extra_fields.setdefault('is_staff', True)
-        extra_fields.setdefault('is_superuser', True)
+        extra_fields.setdefault("is_staff", True)
+        extra_fields.setdefault("is_superuser", True)
 
-        if extra_fields.get('is_staff') is not True:
-            raise ValueError('Superuser должен иметь is_staff=True.')
-        if extra_fields.get('is_superuser') is not True:
-            raise ValueError('Superuser должен иметь is_superuser=True.')
+        if extra_fields.get("is_staff") is not True:
+            raise ValueError("Superuser должен иметь is_staff=True.")
+        if extra_fields.get("is_superuser") is not True:
+            raise ValueError("Superuser должен иметь is_superuser=True.")
 
         return self.create_user(email, password, **extra_fields)
+
 
 class CustomUser(AbstractUser):
     username = None  # отключаем поле username
